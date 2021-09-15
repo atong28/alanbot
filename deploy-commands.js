@@ -11,6 +11,8 @@ for (const file of commandFiles) {
 	commands.push(command.data.toJSON());
 }
 
+
+// Send to Discord
 const rest = new REST({ version: '9' }).setToken(token);
 
 (async () => {

@@ -8,24 +8,21 @@ client.commands = new Collection();
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
+// Read all command files
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
-	// Set a new item in the Collection
-	// With the key as the command name and the value as the exported module
 	client.commands.set(command.data.name, command);
 }
 
-// When the client is ready, run this code (only once)
 client.once('ready', () => {
 	console.log('Ready!');
 });
 
+// When slash command is executed
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isCommand()) return;
 
 	console.log(interaction);
-
-	const { commandName } = interaction;
 
 	const command = client.commands.get(interaction.commandName);
 
@@ -39,5 +36,5 @@ client.on('interactionCreate', async interaction => {
 	}
 });
 
-// Login to Discord with your client's token
+// Login to Discord
 client.login(token);
