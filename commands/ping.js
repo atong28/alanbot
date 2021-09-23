@@ -12,7 +12,7 @@ module.exports = {
 	async execute(interaction) {
 		let user = interaction.options.getUser('person');
 
-		await interaction.reply(`Ping on **${user.tag}** started!`);
+		await interaction.reply({content : `Ping on **${user.tag}** started!`, ephemeral: true});
 		console.log(`Started pinging on: ${user.tag}!`)
 
 		interval = setInterval(async () => {

@@ -8,9 +8,9 @@ module.exports = {
 		.setDescription('Stops the ping.'),
         async execute(interaction) {
             if (typeof interval === 'undefined') {
-                await interaction.reply('Nobody is currently being pinged!');
+                await interaction.reply({content:'Nobody is currently being pinged!', ephemeral: true});
             } else {
-                await interaction.reply(`Stopping pinging!`);
+                await interaction.reply({content: `Stopping pinging!`, ephemeral: true});
                 await clearInterval(interval);
             }
             
